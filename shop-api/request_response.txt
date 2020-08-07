@@ -1,0 +1,146 @@
+host: http://localhost:3000
+api end point : /category
+
+1. Add a category with sub category
+
+method : POST
+
+request: {
+	"name": "Honey",
+    "childCategories": [
+        {
+            "name": "cum Sweet"
+        },
+        {
+            "name": "Strong Sweet"
+        }
+    ]
+    
+}
+response: {
+    "_id": "5f2d976dfe17aaaffc9cf1ef",
+    "name": "Honey",
+    "childCategories": [
+        {
+            "_id": "5f2d976dfe17aaaffc9cf1f0",
+            "name": "cum Sweet",
+            "createdDate": "2020-08-07T18:03:25.076Z"
+        },
+        {
+            "_id": "5f2d976dfe17aaaffc9cf1f1",
+            "name": "Strong Sweet",
+            "createdDate": "2020-08-07T18:03:25.077Z"
+        }
+    ],
+    "createdDate": "2020-08-07T18:03:25.078Z",
+    "__v": 0
+}
+
+2. Get all Category with child
+
+method: GET
+
+3.Update child Category with category
+
+metohod: PATCH
+request: {
+	"name": "Honey",
+    "childCategories": [
+        {
+            "name": "cum Sweet"
+        }
+    ]
+    
+}
+response: {
+    "_id": "5f2c3cf0d5464f87457cdb5e",
+    "name": "Honey",
+    "childCategories": [
+        {
+            "_id": "5f2d98d8fe17aaaffc9cf1f2",
+            "name": "cum Sweet",
+            "createdDate": "2020-08-07T18:09:28.994Z"
+        }
+    ],
+    "createdDate": "2020-08-06T17:25:04.921Z",
+    "__v": 1
+}
+4. Get Category by id 
+url : /category/5f2c3cf0d5464f87457cdb5e
+method: GET
+response:{
+    "_id": "5f2c3cf0d5464f87457cdb5e",
+    "name": "Honey",
+    "childCategories": [
+        {
+            "_id": "5f2d98d8fe17aaaffc9cf1f2",
+            "name": "cum Sweet",
+            "createdDate": "2020-08-07T18:09:28.994Z"
+        }
+    ],
+    "createdDate": "2020-08-06T17:25:04.921Z",
+    "__v": 1
+}
+
+============================================================================
+1. Get all Products with category
+url : /products/
+method: GET
+response: [
+    {
+        "price": 23,
+        "category": [
+            "5f2c3cf0d5464f87457cdb5e"
+        ],
+        "_id": "5f2c474b4c5ea8894756033d",
+        "name": "Apple",
+        "createdDate": "2020-08-06T18:09:15.170Z",
+        "__v": 0
+    },
+    {
+        "price": 26,
+        "category": [
+            "5f2c3cf0d5464f87457cdb5e"
+        ],
+        "_id": "5f2d89fa418abeacbc1acad6",
+        "name": "Apple11",
+        "createdDate": "2020-08-07T17:06:02.292Z",
+        "__v": 0
+    }
+]
+2. Add a product 
+
+url: /products
+method: POST
+request: {
+	"name": "Mango",
+    "price": 26
+}
+response: {
+    "price": 26,
+    "category": [],
+    "_id": "5f2d9a9bfe17aaaffc9cf1f5",
+    "name": "Mango",
+    "createdDate": "2020-08-07T18:16:59.456Z",
+    "__v": 0
+}
+
+3. Update price and name for  product 
+url: /products/5f2d9a9bfe17aaaffc9cf1f5
+method: PATCH
+
+request:
+{
+	"name": "Mango",
+    "price": 27
+}
+response:
+
+{
+    "price": 27,
+    "category": [],
+    "_id": "5f2d9a9bfe17aaaffc9cf1f5",
+    "name": "Mango",
+    "createdDate": "2020-08-07T18:16:59.456Z",
+    "__v": 0
+}
